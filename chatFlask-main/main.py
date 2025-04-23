@@ -6,8 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 app.secret_key = "skrivni_kljuc_123"
 
-USERS_FILE = 'users.json'
-REVIEWS_FILE = 'reviews.json'
+USERS_FILE = 'uporabniki.json'
 
 def load_users():
     try:
