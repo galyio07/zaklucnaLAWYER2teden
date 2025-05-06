@@ -3,22 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GT - Lawyer Chat</title>
+    <title>Pravni Klepet</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #8E153F;
-            --primary-light: rgba(142, 21, 63, 0.8);
             --primary-dark: #6B0F30;
-            --primary-transparent: rgba(142, 21, 63, 0.15);
             --dark: #1A1A2E;
             --medium: #394867;
             --light: #F1F6F9;
-            --lighter: #F8F9FA;
             --white: #ffffff;
-            --accent: #FFD369;
-            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             --radius: 12px;
         }
 
@@ -35,55 +29,31 @@
             display: flex;
             color: var(--dark);
             line-height: 1.6;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
         }
 
         .page-container {
             display: flex;
             width: 100%;
             height: 100vh;
-            position: relative;
-            z-index: 1;
-            background: linear-gradient(135deg, rgba(26, 26, 46, 0.9) 0%, rgba(57, 72, 103, 0.8) 100%);
+            background: var(--dark);
         }
 
         .sidebar {
-            width: 300px;
-            background-color: rgba(26, 26, 46, 0.85);
+            width: 240px;
+            background-color: #151525;
             display: flex;
             flex-direction: column;
-            padding: 40px 20px;
+            padding: 30px 20px;
             color: var(--white);
             border-right: 1px solid rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sidebar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('/api/placeholder/600/1200') center/cover no-repeat;
-            opacity: 0.08;
-            z-index: -1;
         }
 
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 600;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             color: var(--white);
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
         }
@@ -91,10 +61,10 @@
         .logo::before {
             content: '';
             display: inline-block;
-            width: 8px;
-            height: 24px;
+            width: 6px;
+            height: 20px;
             background: var(--primary);
-            margin-right: 12px;
+            margin-right: 10px;
             border-radius: 2px;
         }
 
@@ -106,68 +76,39 @@
 
         .nav-item {
             width: 100%;
-            padding: 14px 18px;
+            padding: 12px 16px;
             border-radius: var(--radius);
             color: var(--light);
-            text-align: left;
             cursor: pointer;
-            transition: var(--transition);
             font-weight: 500;
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .nav-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 4px;
-            background: transparent;
-            border-radius: 0 4px 4px 0;
-            transition: var(--transition);
-        }
-
-        .nav-item:hover::before {
-            background: var(--primary-light);
         }
 
         .nav-item.active {
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .nav-item.active::before {
-            background: var(--primary);
-        }
-
         .nav-item-icon {
             margin-right: 12px;
-            font-size: 18px;
-            opacity: 0.8;
+            font-size: 16px;
         }
 
         .chat-container {
-            background: var(--lighter);
+            background: var(--light);
             flex: 1;
             height: 100vh;
             display: flex;
             flex-direction: column;
-            box-shadow: var(--box-shadow);
-            position: relative;
-            z-index: 1;
-            border-radius: 24px 0 0 24px;
+            border-radius: 16px 0 0 16px;
             overflow: hidden;
-            transition: var(--transition);
         }
 
         .chat-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 30px;
+            padding: 16px 24px;
             border-bottom: 1px solid rgba(0,0,0,0.06);
             background-color: var(--white);
         }
@@ -179,36 +120,22 @@
         }
 
         .lawyer-avatar {
-            width: 54px;
-            height: 54px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 16px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 600;
             color: var(--white);
-            box-shadow: 0 4px 10px rgba(142, 21, 63, 0.3);
-            font-size: 18px;
-            position: relative;
-        }
-
-        .lawyer-avatar::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            right: -2px;
-            width: 14px;
-            height: 14px;
-            background: #4CAF50;
-            border: 2px solid var(--white);
-            border-radius: 50%;
+            font-size: 16px;
         }
 
         .lawyer-name-container h3 {
             color: var(--dark);
             font-weight: 600;
-            font-size: 18px;
+            font-size: 16px;
             margin-bottom: 4px;
         }
 
@@ -231,15 +158,14 @@
 
         .end-chat-btn {
             border: none;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: var(--radius);
             cursor: pointer;
             font-weight: 500;
-            transition: var(--transition);
             font-family: 'Poppins', sans-serif;
             background: var(--white);
             color: var(--primary);
-            border: 1px solid var(--primary-transparent);
+            border: 1px solid #f0f0f0;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -247,28 +173,24 @@
 
         .end-chat-btn::after {
             content: '×';
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 300;
         }
 
         .end-chat-btn:hover {
             background: var(--primary);
             color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(142, 21, 63, 0.2);
         }
 
         .chat-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 30px;
-            background-color: var(--lighter);
-            scrollbar-width: thin;
-            scrollbar-color: var(--primary-light) var(--light);
+            padding: 24px;
+            background-color: var(--light);
         }
 
         .chat-messages::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
 
         .chat-messages::-webkit-scrollbar-track {
@@ -276,24 +198,17 @@
         }
 
         .chat-messages::-webkit-scrollbar-thumb {
-            background: var(--primary-light);
+            background: #ccc;
             border-radius: 10px;
         }
 
         .message {
-            margin-bottom: 24px;
-            padding: 18px 22px;
-            border-radius: 20px;
+            margin-bottom: 20px;
+            padding: 14px 18px;
+            border-radius: 16px;
             max-width: 70%;
             word-wrap: break-word;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-            position: relative;
-            animation: fadeIn 0.3s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
         .lawyer-message {
@@ -303,7 +218,7 @@
         }
 
         .user-message {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: var(--primary);
             color: var(--white);
             margin-left: auto;
             border-bottom-right-radius: 4px;
@@ -320,18 +235,18 @@
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            padding: 12px 16px;
+            padding: 10px 14px;
             background: var(--white);
-            border-radius: 20px;
+            border-radius: 16px;
             border-bottom-left-radius: 4px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-            margin-bottom: 24px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
             display: none;
         }
 
         .typing-indicator span {
-            width: 8px;
-            height: 8px;
+            width: 6px;
+            height: 6px;
             background-color: var(--primary);
             border-radius: 50%;
             animation: typing 1.4s infinite;
@@ -349,8 +264,8 @@
 
         .chat-input-container {
             display: flex;
-            padding: 20px 30px 30px;
-            background-color: var(--lighter);
+            padding: 16px 24px 24px;
+            background-color: var(--light);
             position: relative;
         }
 
@@ -358,89 +273,59 @@
             content: '';
             position: absolute;
             top: 0;
-            left: 5%;
-            right: 5%;
+            left: 10%;
+            right: 10%;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(0,0,0,0.06), transparent);
+            background: #e0e0e0;
         }
 
         .chat-input {
             flex: 1;
             background: var(--white);
-            border: 1px solid rgba(0,0,0,0.08);
-            border-radius: 30px;
-            padding: 16px 25px;
+            border: 1px solid #e0e0e0;
+            border-radius: 24px;
+            padding: 14px 20px;
             color: var(--dark);
             font-family: 'Poppins', sans-serif;
-            transition: var(--transition);
-            margin-right: 15px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+            margin-right: 12px;
         }
 
         .chat-input::placeholder {
-            color: var(--medium);
-            opacity: 0.6;
+            color: #999;
         }
 
         .chat-input:focus {
             outline: none;
-            border-color: var(--primary-light);
-            box-shadow: 0 0 0 3px var(--primary-transparent);
+            border-color: var(--primary);
         }
 
         .send-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background: var(--primary);
             color: var(--white);
             border: none;
             border-radius: 50%;
-            width: 54px;
-            height: 54px;
+            width: 46px;
+            height: 46px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(142, 21, 63, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .send-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 100%);
-            opacity: 0;
-            transition: var(--transition);
-        }
-        
-        .send-btn:hover::before {
-            opacity: 1;
         }
         
         .send-btn:after {
             content: '→';
-            font-size: 22px;
+            font-size: 20px;
         }
 
-        .send-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 20px rgba(142, 21, 63, 0.4);
-        }
-
-        @media (max-width: 992px) {
+        @media (max-width: 768px) {
             .sidebar {
-                width: 80px;
-                padding: 30px 10px;
+                width: 70px;
+                padding: 24px 10px;
             }
             
             .logo {
-                font-size: 22px;
+                font-size: 20px;
                 justify-content: center;
-                margin-bottom: 40px;
             }
             
             .logo::before {
@@ -453,16 +338,15 @@
             
             .nav-item {
                 justify-content: center;
-                padding: 12px;
+                padding: 10px;
             }
             
             .nav-item-icon {
                 margin-right: 0;
-                font-size: 20px;
             }
             
             .chat-container {
-                border-radius: 20px 0 0 20px;
+                border-radius: 16px 0 0 16px;
             }
         }
         
@@ -474,7 +358,7 @@
             .sidebar {
                 width: 100%;
                 height: auto;
-                padding: 15px;
+                padding: 12px;
                 flex-direction: row;
                 justify-content: space-between;
                 border-right: none;
@@ -487,26 +371,18 @@
             
             .nav-items {
                 flex-direction: row;
-                gap: 10px;
+                gap: 8px;
             }
             
             .nav-item {
                 width: auto;
-                padding: 10px;
+                padding: 8px;
             }
             
             .chat-container {
                 width: 100%;
-                height: calc(100vh - 70px);
+                height: calc(100vh - 60px);
                 border-radius: 0;
-            }
-            
-            .chat-header {
-                padding: 15px 20px;
-            }
-            
-            .chat-messages {
-                padding: 20px;
             }
             
             .message {
@@ -517,7 +393,7 @@
 </head>
 <body>
     <div class="page-container">
-        <div class="sidebar glass-effect">
+        <div class="sidebar">
             <div class="logo">GT LAW</div>
             <div class="nav-items">
                 <div class="nav-item active">
@@ -532,11 +408,12 @@
                 <div class="lawyer-info">
                     <div class="lawyer-avatar" id="lawyer-initials">LA</div>
                     <div class="lawyer-name-container">
-                        <h3 id="lawyer-name">Lawyer Name</h3>
-                        <small id="lawyer-type">{{ lawyer_type }}</small>
+                        <h3 id="lawyer-name">Pravnik</h3>
+                        <small id="lawyer-type">Pravni svetovalec</small>
                     </div>
                 </div>
-                <button class="end-chat-btn" onclick="endChat()">Zaključi</button>
+                
+                <a href="{{ url_for('logout') }}"><button class="end-chat-btn">Zaključi</button></a>
             </div>
 
             <div class="chat-messages" id="chat-messages">
@@ -555,50 +432,70 @@
     </div>
 
     <script>
+        // Simplified JavaScript without map or math functions
         
-        const lawyerType = "{{ lawyer_type }}";
+        const lawyerTypes = ["Korporativni", "Kazenska prava", "Družinski", "Intelektualni"];
+        const lawyerType = lawyerTypes[2]; // Example default
         
-   
         let lawyerName = '';
-        switch(lawyerType) {
-            case 'Korporativni':
-                lawyerName = 'Tevž Bertoncelj';
-                break;
-            case 'Kazenska prava':
-                lawyerName = 'Gal Tomše';
-                break;
-            case 'Družinski':
-                lawyerName = 'Arh Andraž';
-                break;
-            case 'Intelektualni':
-                lawyerName = 'Bine Tavčar';
-                break;
-            default:
-                lawyerName = 'Pravni Svetovalec';
+        if(lawyerType === "Korporativni") {
+            lawyerName = 'Tevž Bertoncelj';
+            document.getElementById('lawyer-initials').textContent = 'TB';
+        } else if(lawyerType === "Kazenska prava") {
+            lawyerName = 'Gal Tomše';
+            document.getElementById('lawyer-initials').textContent = 'GT';
+        } else if(lawyerType === "Družinski") {
+            lawyerName = 'Arh Andraž';
+            document.getElementById('lawyer-initials').textContent = 'AA';
+        } else if(lawyerType === "Intelektualni") {
+            lawyerName = 'Bine Tavčar';
+            document.getElementById('lawyer-initials').textContent = 'BT';
+        } else {
+            lawyerName = 'Pravni Svetovalec';
+            document.getElementById('lawyer-initials').textContent = 'PS';
         }
         
         document.getElementById('lawyer-name').textContent = lawyerName;
-        document.getElementById('lawyer-initials').textContent = lawyerName.split(' ').map(name => name[0]).join('');
+        document.getElementById('lawyer-type').textContent = lawyerType;
         
+        // Add first message when page loads
         window.onload = function() {
-            setTimeout(() => {
-                showTypingIndicator();
+            setTimeout(function() {
+               
                 
-                setTimeout(() => {
-                    hideTypingIndicator();
-                    addMessage(`Pozdravljen{% if uporabnisko_ime %}, {{ uporabnisko_ime }}{% endif %}! Jaz sem ${lawyerName}, tvoj ${lawyerType} odvetnik. Kako ti lahko pomagam danes?`, 'lawyer');
+                setTimeout(function() {
+                  
+                    addMessage("Pozdravljen! Jaz sem " + lawyerName + ", tvoj " + lawyerType + " odvetnik. Kako ti lahko pomagam danes?", 'lawyer');
                 }, 1500);
             }, 500);
         };
         
-        function showTypingIndicator() {
-            const typingIndicator = document.getElementById('typing-indicator');
-            typingIndicator.style.display = 'inline-flex';
-        }
-        
-        function hideTypingIndicator() {
-            const typingIndicator = document.getElementById('typing-indicator');
-            typingIndicator.style.display = 'none';
+        function addMessage(text, sender) {
+            const messagesContainer = document.getElementById('chat-messages');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message');
+            
+            if (sender === 'lawyer') {
+                messageElement.classList.add('lawyer-message');
+            } else {
+                messageElement.classList.add('user-message');
+            }
+            
+            messageElement.textContent = text;
+            
+            const timeElement = document.createElement('div');
+            timeElement.classList.add('message-time');
+            
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            timeElement.textContent = hours + ':' + minutes;
+            
+            messageElement.appendChild(timeElement);
+            messagesContainer.appendChild(messageElement);
+            
+            // Scroll to the bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
         
         function sendMessage() {
@@ -609,31 +506,24 @@
                 addMessage(message, 'user');
                 input.value = '';
                 
-               
-                setTimeout(() => {
+                setTimeout(function() {
                     showTypingIndicator();
                     
-                    setTimeout(() => {
+                    setTimeout(function() {
                         hideTypingIndicator();
                         simulateLawyerResponse();
-                    }, Math.random() * 1000 + 1000);
+                    }, 1000 + 500);
                 }, 500);
             }
         }
         
-        function simulateLawyerResponse() {
-            const responses = [
-                "Razumem vašo situacijo. Lahko mi poveste več podrobnosti o tem?",
-                "To je zanimivo vprašanje. Poglejmo, kako vam lahko pomagam s tem.",
-                "Glede na to, kar ste mi povedali, bi vam svetoval naslednje korake...",
-                "V tem primeru bi bilo dobro, da pregledamo vse pravne možnosti.",
-                "Ali mi lahko poveste, kdaj natančno se je to zgodilo?"
-            ];
-            
-            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-            addMessage(randomResponse, 'lawyer');
-        }
         
+        // Add enter key press event listener
+        document.getElementById('user-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
     </script>
 </body>
 </html>

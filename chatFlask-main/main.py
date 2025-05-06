@@ -8,7 +8,7 @@ app.secret_key = "skrivni_kljuc_123"
 
 USERS_FILE = 'uporabniki.json'
 
-'''def load_users():
+def load_users():
     try:
         if not os.path.exists(USERS_FILE):
             return {}
@@ -16,11 +16,11 @@ USERS_FILE = 'uporabniki.json'
             return json.load(f)
     except (json.JSONDecodeError, IOError) as e:
         print(f"Error loading users: {e}")
-        return {}'''
+        return {}
 
-'''def save_users(users):
+def save_users(users):
     with open(USERS_FILE, 'w') as f:
-        json.dump(users, f, indent=4)'''
+        json.dump(users, f, indent=4)
 
 
 @app.route('/')
