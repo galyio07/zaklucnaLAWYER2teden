@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pravni Klepet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #8E153F;
-            --primary-dark: #6B0F30;
             --dark: #1A1A2E;
-            --medium: #394867;
             --light: #F1F6F9;
             --white: #ffffff;
-            --radius: 12px;
         }
 
         * {
@@ -23,280 +19,133 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: var(--dark);
             min-height: 100vh;
             display: flex;
             color: var(--dark);
-            line-height: 1.6;
         }
 
         .page-container {
             display: flex;
             width: 100%;
             height: 100vh;
-            background: var(--dark);
         }
 
         .sidebar {
-            width: 240px;
+            width: 200px;
             background-color: #151525;
-            display: flex;
-            flex-direction: column;
-            padding: 30px 20px;
+            padding: 20px;
             color: var(--white);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .logo {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 40px;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 30px;
             color: var(--white);
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 20px;
-            background: var(--primary);
-            margin-right: 10px;
-            border-radius: 2px;
-        }
-
-        .nav-items {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
         }
 
         .nav-item {
-            width: 100%;
-            padding: 12px 16px;
-            border-radius: var(--radius);
+            padding: 10px;
+            border-radius: 8px;
             color: var(--light);
             cursor: pointer;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
+            margin-bottom: 5px;
         }
 
         .nav-item.active {
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .nav-item-icon {
-            margin-right: 12px;
-            font-size: 16px;
-        }
-
         .chat-container {
             background: var(--light);
             flex: 1;
-            height: 100vh;
             display: flex;
             flex-direction: column;
-            border-radius: 16px 0 0 16px;
-            overflow: hidden;
         }
 
         .chat-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 24px;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 15px 20px;
             background-color: var(--white);
+            border-bottom: 1px solid #eee;
         }
 
         .lawyer-info {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
 
         .lawyer-avatar {
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             background: var(--primary);
-            border-radius: 14px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 600;
             color: var(--white);
-            font-size: 16px;
-        }
-
-        .lawyer-name-container h3 {
-            color: var(--dark);
-            font-weight: 600;
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .lawyer-name-container small {
-            color: var(--medium);
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .lawyer-name-container small::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background: #4CAF50;
-            border-radius: 50%;
-            margin-right: 6px;
         }
 
         .end-chat-btn {
             border: none;
-            padding: 10px 20px;
-            border-radius: var(--radius);
+            padding: 8px 15px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 500;
-            font-family: 'Poppins', sans-serif;
-            background: var(--white);
+            background: #f0f0f0;
             color: var(--primary);
-            border: 1px solid #f0f0f0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .end-chat-btn::after {
-            content: '×';
-            font-size: 18px;
-            font-weight: 300;
-        }
-
-        .end-chat-btn:hover {
-            background: var(--primary);
-            color: var(--white);
         }
 
         .chat-messages {
             flex: 1;
             overflow-y: auto;
-            padding: 24px;
-            background-color: var(--light);
-        }
-
-        .chat-messages::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .chat-messages::-webkit-scrollbar-track {
-            background: var(--light);
-        }
-
-        .chat-messages::-webkit-scrollbar-thumb {
-            background: #ccc;
-            border-radius: 10px;
+            padding: 20px;
         }
 
         .message {
-            margin-bottom: 20px;
-            padding: 14px 18px;
-            border-radius: 16px;
+            margin-bottom: 15px;
+            padding: 12px;
+            border-radius: 12px;
             max-width: 70%;
             word-wrap: break-word;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
         }
 
         .lawyer-message {
             background: var(--white);
             color: var(--dark);
-            border-bottom-left-radius: 4px;
         }
 
         .user-message {
             background: var(--primary);
             color: var(--white);
             margin-left: auto;
-            border-bottom-right-radius: 4px;
         }
 
         .message-time {
             font-size: 0.7rem;
             opacity: 0.7;
             text-align: right;
-            margin-top: 8px;
-        }
-
-        .typing-indicator {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            padding: 10px 14px;
-            background: var(--white);
-            border-radius: 16px;
-            border-bottom-left-radius: 4px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-            margin-bottom: 20px;
-            display: none;
-        }
-
-        .typing-indicator span {
-            width: 6px;
-            height: 6px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            animation: typing 1.4s infinite;
-            opacity: 0.7;
-        }
-
-        .typing-indicator span:nth-child(1) { animation-delay: 0s; }
-        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
-        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
-
-        @keyframes typing {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-4px); }
+            margin-top: 5px;
         }
 
         .chat-input-container {
             display: flex;
-            padding: 16px 24px 24px;
+            padding: 15px 20px;
             background-color: var(--light);
-            position: relative;
-        }
-
-        .chat-input-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 10%;
-            right: 10%;
-            height: 1px;
-            background: #e0e0e0;
+            border-top: 1px solid #e0e0e0;
         }
 
         .chat-input {
             flex: 1;
             background: var(--white);
             border: 1px solid #e0e0e0;
-            border-radius: 24px;
-            padding: 14px 20px;
-            color: var(--dark);
-            font-family: 'Poppins', sans-serif;
-            margin-right: 12px;
-        }
-
-        .chat-input::placeholder {
-            color: #999;
-        }
-
-        .chat-input:focus {
-            outline: none;
-            border-color: var(--primary);
+            border-radius: 20px;
+            padding: 10px 15px;
+            margin-right: 10px;
         }
 
         .send-btn {
@@ -304,49 +153,23 @@
             color: var(--white);
             border: none;
             border-radius: 50%;
-            width: 46px;
-            height: 46px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-        }
-        
-        .send-btn:after {
-            content: '→';
-            font-size: 20px;
         }
 
         @media (max-width: 768px) {
             .sidebar {
-                width: 70px;
-                padding: 24px 10px;
+                width: 60px;
             }
             
             .logo {
-                font-size: 20px;
-                justify-content: center;
-            }
-            
-            .logo::before {
-                display: none;
+                font-size: 16px;
+                text-align: center;
             }
             
             .nav-item span {
                 display: none;
-            }
-            
-            .nav-item {
-                justify-content: center;
-                padding: 10px;
-            }
-            
-            .nav-item-icon {
-                margin-right: 0;
-            }
-            
-            .chat-container {
-                border-radius: 16px 0 0 16px;
             }
         }
         
@@ -358,35 +181,13 @@
             .sidebar {
                 width: 100%;
                 height: auto;
-                padding: 12px;
-                flex-direction: row;
+                padding: 10px;
+                display: flex;
                 justify-content: space-between;
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            
-            .logo {
-                margin-bottom: 0;
-            }
-            
-            .nav-items {
-                flex-direction: row;
-                gap: 8px;
-            }
-            
-            .nav-item {
-                width: auto;
-                padding: 8px;
             }
             
             .chat-container {
-                width: 100%;
-                height: calc(100vh - 60px);
-                border-radius: 0;
-            }
-            
-            .message {
-                max-width: 85%;
+                height: calc(100vh - 50px);
             }
         }
     </style>
@@ -395,106 +196,70 @@
     <div class="page-container">
         <div class="sidebar">
             <div class="logo">GT LAW</div>
-            <div class="nav-items">
-                <div class="nav-item active">
-                    <div class="nav-item-icon">💬</div>
-                    <span>Pogovor</span>
-                </div>
-            </div>
+            <div class="nav-item active">💬 Pogovor</div>
         </div>
         
         <div class="chat-container">
             <div class="chat-header">
                 <div class="lawyer-info">
-                    <div class="lawyer-avatar" id="lawyer-initials">LA</div>
-                    <div class="lawyer-name-container">
-                        <h3 id="lawyer-name">Pravnik</h3>
+                    <div class="lawyer-avatar" id="lawyer-initials">PS</div>
+                    <div>
+                        <div id="lawyer-name">Pravnik</div>
                         <small id="lawyer-type">Pravni svetovalec</small>
                     </div>
                 </div>
                 
-                <a href="{{ url_for('logout') }}"><button class="end-chat-btn">Zaključi</button></a>
+                <a href="lawyer_selection"><button class="end-chat-btn">Zaključi</button></a>
             </div>
 
-            <div class="chat-messages" id="chat-messages">
-                <div class="typing-indicator" id="typing-indicator">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
+            <div class="chat-messages" id="chat-messages"></div>
 
             <div class="chat-input-container">
                 <input type="text" class="chat-input" id="user-input" placeholder="Vpiši svoje sporočilo..." autocomplete="off">
-                <button class="send-btn" onclick="sendMessage()"></button>
+                <button class="send-btn" onclick="sendMessage()">→</button>
             </div>
         </div>
     </div>
 
     <script>
-        // Simplified JavaScript without map or math functions
-        
-        const lawyerTypes = ["Korporativni", "Kazenska prava", "Družinski", "Intelektualni"];
-        const lawyerType = lawyerTypes[2]; // Example default
-        
-        let lawyerName = '';
-        if(lawyerType === "Korporativni") {
-            lawyerName = 'Tevž Bertoncelj';
-            document.getElementById('lawyer-initials').textContent = 'TB';
-        } else if(lawyerType === "Kazenska prava") {
-            lawyerName = 'Gal Tomše';
-            document.getElementById('lawyer-initials').textContent = 'GT';
-        } else if(lawyerType === "Družinski") {
-            lawyerName = 'Arh Andraž';
-            document.getElementById('lawyer-initials').textContent = 'AA';
-        } else if(lawyerType === "Intelektualni") {
-            lawyerName = 'Bine Tavčar';
-            document.getElementById('lawyer-initials').textContent = 'BT';
-        } else {
-            lawyerName = 'Pravni Svetovalec';
-            document.getElementById('lawyer-initials').textContent = 'PS';
+        // tukaj dobimo odvetnika glede na izbiro
+        function getUrlParameter(name) {
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
         }
         
-        document.getElementById('lawyer-name').textContent = lawyerName;
-        document.getElementById('lawyer-type').textContent = lawyerType;
+        // tipi odvetnikou
+        const lawyerType = getUrlParameter('type') || "General";
+        const lawyerInfo = {
+            "Korporativni": { name: 'Tevž Bertoncelj', initials: 'TB' },
+            "Kazenska prava": { name: 'Gal Tomše', initials: 'GT' },
+            "Družinski": { name: 'Arh Andraž', initials: 'AA' },
+            "Intelektualni": { name: 'Bine Tavčar', initials: 'BT' },
+            "General": { name: 'Pravni Svetovalec', initials: 'PS' }
+        };
         
-        // Add first message when page loads
+        // podatki o odvetniku
+        const lawyer = lawyerInfo[lawyerType] || lawyerInfo["General"];
+        document.getElementById('lawyer-name').textContent = lawyer.name;
+        document.getElementById('lawyer-initials').textContent = lawyer.initials;
+        document.getElementById('lawyer-type').textContent = lawyerType + " odvetnik";
+        
+        
         window.onload = function() {
             setTimeout(function() {
-               
-                
-                setTimeout(function() {
-                  
-                    addMessage("Pozdravljen! Jaz sem " + lawyerName + ", tvoj " + lawyerType + " odvetnik. Kako ti lahko pomagam danes?", 'lawyer');
-                }, 1500);
+                addMessage("Pozdravljen! Jaz sem " + lawyer.name + ", tvoj " + lawyerType + " odvetnik. Kako ti lahko pomagam danes?", 'lawyer');
             }, 500);
         };
         
         function addMessage(text, sender) {
             const messagesContainer = document.getElementById('chat-messages');
             const messageElement = document.createElement('div');
-            messageElement.classList.add('message');
-            
-            if (sender === 'lawyer') {
-                messageElement.classList.add('lawyer-message');
-            } else {
-                messageElement.classList.add('user-message');
-            }
-            
+            messageElement.classList.add('message', sender + '-message');
             messageElement.textContent = text;
             
-            const timeElement = document.createElement('div');
-            timeElement.classList.add('message-time');
-            
-            const now = new Date();
-            const hours = now.getHours().toString().padStart(2, '0');
-            const minutes = now.getMinutes().toString().padStart(2, '0');
-            timeElement.textContent = hours + ':' + minutes;
-            
-            messageElement.appendChild(timeElement);
+           
             messagesContainer.appendChild(messageElement);
-            
-            // Scroll to the bottom
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
         
@@ -506,19 +271,11 @@
                 addMessage(message, 'user');
                 input.value = '';
                 
-                setTimeout(function() {
-                    showTypingIndicator();
-                    
-                    setTimeout(function() {
-                        hideTypingIndicator();
-                        simulateLawyerResponse();
-                    }, 1000 + 500);
-                }, 500);
+                
             }
         }
         
-        
-        // Add enter key press event listener
+        // da lahko z enter posljes sporocilo
         document.getElementById('user-input').addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {
                 sendMessage();

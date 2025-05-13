@@ -98,6 +98,7 @@
             align-items: center;
             justify-content: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
         }
 
         .service-card:hover {
@@ -142,6 +143,46 @@
             color: var(--dark-gray);
             opacity: 0.7;
         }
+
+        
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            width: 220px;
+            background-color: var(--dark-gray);
+            color: var(--white);
+            text-align: center;
+            border-radius: 6px;
+            padding: 10px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.85rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .tooltip .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: var(--dark-gray) transparent transparent transparent;
+        }
+
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -157,21 +198,25 @@
         
         <h3 class="section-title">Izberite svojega odvetnika</h3>
         <div class="services-grid">
-            <div class="service-card" onclick="selectLawyer('Korporativni')">
+            <div class="service-card tooltip" onclick="selectLawyer('Korporativni')">
                 <div class="service-icon">⚖️</div>
                 <h4>Korporativni Odvetnik</h4>
+                <span class="tooltip-text">Svetovanje pri ustanavljanju podjetij, prevzemih, pogodbah in gospodarskem pravu. Zastopanje pred sodišči v gospodarskih sporih.</span>
             </div>
-            <div class="service-card" onclick="selectLawyer('Kazenska prava')">
+            <div class="service-card tooltip" onclick="selectLawyer('Kazenska prava')">
                 <div class="service-icon">🔒</div>
                 <h4>Kazenski Odvetnik</h4>
+                <span class="tooltip-text">Zastopanje v kazenskih postopkih, pravno svetovanje o kazenskem pravu, priprava obrambe in zastopanje pred sodiščem.</span>
             </div>
-            <div class="service-card" onclick="selectLawyer('Družinski')">
+            <div class="service-card tooltip" onclick="selectLawyer('Družinski')">
                 <div class="service-icon">👪</div>
                 <h4>Družinski Odvetnik</h4>
+                <span class="tooltip-text">Pravno svetovanje pri ločitvah, skrbništvu otrok, preživninah, posvojitvah in drugih družinskih zadevah.</span>
             </div>
-            <div class="service-card" onclick="selectLawyer('Intelektualni')">
+            <div class="service-card tooltip" onclick="selectLawyer('Intelektualni')">
                 <div class="service-icon">💡</div>
                 <h4>Intelektualni Odvetnik</h4>
+                <span class="tooltip-text">Zaščita avtorskih pravic, blagovnih znamk, patentov in druge intelektualne lastnine. Svetovanje pri licenciranju in sporih.</span>
             </div>
         </div>
 
